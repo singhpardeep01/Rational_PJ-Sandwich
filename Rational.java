@@ -1,7 +1,7 @@
-// Team PJ-Sandwich -- Jessica Yang, Pardeep Singh
+// Team PJ-Sandwich -- James Wang, Pardeep Singh
 // APCS1 pd9
-// HW32 -- Irrationality Stops Here
-// 2015-11-17
+// HW33 -- Do You Even Add, Bro?
+// 2015-11-18
 
 public class Rational {
 
@@ -21,7 +21,7 @@ public class Rational {
 		if (denominator != 0) {
 			this.denominator = denominator;
 			this.numerator = numerator;
-		} 
+		}
 		else {
 			System.out.println("Invalid denominator");
 		}
@@ -60,7 +60,7 @@ public class Rational {
 		r.divide(s); // Divides r by s, changes r to 2/3.  s remains 1/2
 		System.out.println(r.toString());
 		System.out.println(r.floatValue());
-		Rational q = new Rational(); // tests default constructor	
+		Rational q = new Rational(); // tests default constructor
 		System.out.println(q.toString());
 		Rational x = new Rational(1, 0); // tests constructor, 0 as denominator
 		System.out.println(x.toString());
