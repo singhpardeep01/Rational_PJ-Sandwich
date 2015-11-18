@@ -45,8 +45,8 @@ public class Rational {
 
 	// takes 1 Rational object as a parameter and divides it by this Rational object, modifies this object
 	public void divide(Rational r) {
-		numerator = numerator / r.numerator;
-		denominator = denominator / r.denominator;
+		numerator = numerator * r.denominator;
+		denominator = denominator * r.numerator;
 	}
 
 
