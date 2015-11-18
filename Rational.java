@@ -69,6 +69,19 @@ public class Rational {
             numerator -= (r.numerator * (denominator / r.denominator));
 	}
 
+    public int gcd() {
+    	int a = numerator;
+    	int b = denominator;
+    	while ( ! ( a % b == 0 ) ) {//as long as a doesnt divide evenly into b
+	    if ( a > b ) {//a is greater than b
+		a = a - ( (a / b) * b );//then subtract the largest multiple of b from a
+	    }
+	    else {
+		b = b - ( (b / a) * a );//or else subtract the largest multiple of a from b
+	    }
+	}
+    	return b;
+    }
         public static int gcd(int a, int b) {
             if (b == 0) {
                 return a;
