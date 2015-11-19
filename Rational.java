@@ -92,21 +92,42 @@ public class Rational {
 	}
 
 	    
-        public static int gcd(int a, int b) {
-            if (b == 0) {
-                return a;
+        public static int gcd(int numerator, int denominator) {
+            if (denominator == 0) {
+                return numerator;
             }
-            return gcd(b, a%b);
+            return gcd(denominator, numerator % denominator);
         }
 
+        public int compareTo(Rational r) {
+	    double calling = numerator / (denominator + 0.0);
+	    double parameter = r.numerator / (r.denominator + 0.0);
+
+	    if ( calling == parameter ) {
+		return 0;
+	    }
+	    else if ( calling > parameter ) {
+		return 1;
+	    }
+	    else {
+		return -1;
+	    }
+	}
+	   
 	// main method for testing
 	public static void main(String[] args) {
 		Rational r = new Rational(2, 3); // Stores the rational number 2/3
 		Rational s = new Rational(1, 2); // Stores the rational number 1/2
-		r.add(s);
-		System.out.println(r);
-		r.subtract(s);
-		System.out.println(r);
+		Rational t = new Rational(2, 4); // Stores the rational number 1/2
+		Rational u = new Rational(5, 3); // Stores the rational number 1/2
+		Rational v = new Rational(6, 1); // Stores the rational number 1/2
+		System.out.println( s.compareTo(t) );
+		System.out.println( v.compareTo(u) );
+		System.out.println( r.compareTo(u) );
+		//r.add(s);
+		// System.out.println(r);
+		// r.subtract(s);
+		// System.out.println(r);
 		// r.multiply(s); // Multiplies r by s, changes r to 2/6.  s remains 1/2
                 // r.reduce();
 		// System.out.println(r.toString());
