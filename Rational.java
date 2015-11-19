@@ -45,43 +45,53 @@ public class Rational {
 
 	// takes 1 Rational object as a parameter and divides it by this Rational object, modifies this object
 	public void divide(Rational r) {
-		numerator = numerator * r.denominator;
-		denominator = denominator * r.numerator;
+	    numerator = numerator * r.denominator;
+	    denominator = denominator * r.numerator;
 	}
 
-	public void reduce() {
-	    int g = gcd(numerator, denominator);
-	    numerator /= g;
-	    denominator /= g;
-	}
 
 	public void add(Rational r) {
-	    int g = gcd(denominator, r.denominator);
-            denominator *= r.denominator / g;
-            numerator *= r.denominator / g;
-            numerator += (r.numerator * (denominator / r.denominator));
+	    int g = new Rational(denominator, r.denominator).gcd();
+	    denominator *= r.denominator / g;
+	    numerator *= r.denominator / g;
+	    numerator += (r.numerator * (denominator / r.denominator));
 	}
 
-	public void subtract(Rational r) {
-	    int g = gcd(denominator, r.denominator);
+        public void subtract(Rational r) {
+	    int g = new Rational(denominator, r.denominator).gcd();
             denominator *= r.denominator / g;
             numerator *= r.denominator / g;
             numerator -= (r.numerator * (denominator / r.denominator));
 	}
-
-    public int gcd() {
-    	int a = numerator;
-    	int b = denominator;
-    	while ( ! ( a % b == 0 ) ) {//as long as a doesnt divide evenly into b
-	    if ( a > b ) {//a is greater than b
-		a = a - ( (a / b) * b );//then subtract the largest multiple of b from a
+        public int gcd() {
+	    int a = numerator;
+	    int b = denominator;
+	    
+	    int theGcd = 1;
+	    
+	    if (a>b) {
+		if (a%b==0) { //done, yay!
+		    theGcd = b;
+		}
+		else { //implement algorithm
+		    a -= b;
+		    theGcd = new Rational(a,b).gcd();
+		}
 	    }
+	    
 	    else {
-		b = b - ( (b / a) * a );//or else subtract the largest multiple of a from b
+		theGcd = new Rational(b,a).gcd(); //instead of rewriting code, switch maxes
 	    }
+	    return theGcd;
 	}
-    	return b;
-    }
+  
+        public void reduce() {
+	    int g = gcd();
+	    numerator /= g;
+	    denominator/= g;
+	}
+
+	    
         public static int gcd(int a, int b) {
             if (b == 0) {
                 return a;
