@@ -116,6 +116,10 @@ public class Rational {
         return -1;
     }
 
+    public boolean equals(Rational r) {
+        return r instanceof Rational && compareTo(r) == 0;
+    }
+
     // main method for testing
     public static void main(String[] args) {
         Rational r = new Rational(2, 3); // Stores the rational number 2/3
@@ -123,6 +127,8 @@ public class Rational {
         Rational t = new Rational(2, 4); // Stores the rational number 2/4
         Rational u = new Rational(5, 3); // Stores the rational number 5/3
         Rational v = new Rational(6, 1); // Stores the rational number 6/1
+        System.out.println(r.equals(s));
+        System.out.println(t.equals(s));
         System.out.println(s.compareTo(t));
         System.out.println(v.compareTo(u));
         System.out.println(r.compareTo(u));
