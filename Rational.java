@@ -117,7 +117,9 @@ public class Rational {
     }
 
     public boolean equals(Rational r) {
-        return r instanceof Rational && compareTo(r) == 0;
+        return r instanceof Rational
+            && this.numerator == r.numerator
+            && this.denominator == r.denominator;
     }
 
     // main method for testing
